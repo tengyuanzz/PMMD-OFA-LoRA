@@ -26,7 +26,7 @@ class Dataset_Lora(Dataset):
         self.scale = scale
         self.percent = percent
         self.technical_indicators = technical_indicators
-        self.rolling_window = 24
+        self.rolling_window = 14
 
         self.root_path = root_path
         self.lora_path = lora_path

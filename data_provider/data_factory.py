@@ -13,7 +13,7 @@ def data_provider(args, flag, drop_last_test=True, train_all=False):
     if flag=='lora':
         print('lora dataloader')
         Data = data_dict['lora']
-        shuffle_flag = True
+        shuffle_flag = False
         drop_last = True
         batch_size = args.batch_size
         freq = args.freq
@@ -52,12 +52,12 @@ def data_provider(args, flag, drop_last_test=True, train_all=False):
             freq = args.freq
             Data = Dataset_Pred
         elif flag == 'val':
-            shuffle_flag = True
+            shuffle_flag = False
             drop_last = drop_last_test
             batch_size = args.batch_size
             freq = args.freq
         else:
-            shuffle_flag = True
+            shuffle_flag = False
             drop_last = True
             batch_size = args.batch_size
             freq = args.freq

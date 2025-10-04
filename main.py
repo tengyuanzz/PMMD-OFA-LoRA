@@ -164,6 +164,7 @@ def main(args):
 
         print("Number of training batches:", len(train_loader))
 
+        #=========================
         for epoch in range(args.train_epochs):
             print(f">>> Starting epoch {epoch}", flush=True)
 
@@ -220,6 +221,7 @@ def main(args):
             if early_stopping.early_stop:
                 print("Early stopping")
                 break
+        #=========================
 
         best_model_path = path + '/' + 'checkpoint.pth'
         model.load_state_dict(torch.load(best_model_path))
@@ -262,12 +264,12 @@ def main(args):
         # total_params = sum(p.numel() for p in model.parameters())
         # print("Total trainable parameters count: ", total_params)
 
-        lora_optimizer = torch.optim.AdamW(trainable_params, lr=1e-6, weight_decay=5e-6)
+        lora_optimizer = torch.optim.AdamW(trainable_params, lr=1e-5, weight_decay=1e-5)
         scheduler = StepLR(lora_optimizer, step_size=4, gamma=0.5)
         loss_fn = nn.MSELoss()
         lora_train_loss = []
 
-        for epoch in range(10):
+        for epoch in range(12):
             # print(epoch)
             for i, (batch_x, batch_y) in enumerate(lora_loader):
                 model.train()

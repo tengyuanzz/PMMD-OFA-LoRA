@@ -353,13 +353,11 @@ def test(model, test_data, test_loader, args, device, itr):
 
     n_windows, pred_len = full_preds.shape
     total_time = test_data.data_x.shape[0]    # original timeline length to map into
-    print('total_time 1:', total_time)
     seq_len = args.seq_len
     stride = 1  # change if your sliding windows use a different stride
 
     # prepare accumulation arrays
     stitched_preds = np.zeros(total_time, dtype=np.float64)
-    print('stitched_preds 1:', stitched_preds)
     stitched_truth = np.zeros(total_time, dtype=np.float64)
     counts = np.zeros(total_time, dtype=np.int32)
 
